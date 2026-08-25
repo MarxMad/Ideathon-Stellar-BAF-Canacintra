@@ -1,0 +1,42 @@
+Estructura y Guion del Pitch: UtezXFuture
+1. El Problema (Hook & Contexto)
+"En los campus universitarios nos enfrentamos a una doble problemática: por un lado, estudiantes que sufren de falta de recursos para su alimentación diaria. Por el otro, infraestructuras con pequeños fallos de mantenimiento que la universidad tarda en resolver por no ser prioritarios o costosos. A esto se le suma el poco apoyo a pequeños emprendimientos dentro del campus."
+
+2. La Solución: Microtrabajos + Economía Blockchain
+"Creamos UtezXFuture, un sistema de brigadas de microtrabajos comunitarios dentro del campus. Los estudiantes motivados solucionan problemas menores de mantenimiento y tareas altruistas. A cambio, son recompensados con tokens dentro de nuestra red Blockchain.Estos tokens sirven como moneda de cambio local para canjear alimentos en la cafetería universitaria o productos de emprendedores locales mediante códigos QR."
+
+3. Propuesta Única de Valor y Tecnología Blockchain
+"UtezXFuture une el impacto social y laboral con la trazabilidad digital:"
+
+Contratos Inteligentes (Smart Contracts): Transparencia e inmutabilidad. Al completar y validar una 'misión', el contrato inteligente ejecuta automáticamente el pago y la transferencia de tokens al estudiante.
+
+Respaldo del Fondo: La universidad o patrocinadores alimentan un fondo de liquidez en dinero real que respalda el valor del token cuando los comercios canjean sus ganancias.
+
+Impacto Académico y Social: Además de comida y recompensas, el trabajo realizado permite liberar horas de servicio social o prácticas profesionales.
+
+4. Mercado Objetivo (Segmentos)
+Estudiantes / Early Adopters: Alumnos con flexibilidad horaria reducida y necesidad económica.
+
+Administración Universitaria: Áreas de mantenimiento que optimizan tiempo y reducen costos de respuesta en tareas pequeñas.
+
+Comercios y Emprendedores: Cafeterías y emprendedores del campus que ganan flujo de clientes constantes.
+
+5. Modelo de Negocio (Estructura Financiera y Monetización)
+Flujos de Ingresos:
+
+Suscripciones para productores/emprendedores que deseen integrarse al marketplace de la red.
+
+Planes de suscripción Premium para funcionalidades avanzadas.
+
+Comisiones por transacciones o contratos ejecutados dentro del ecosistema.
+
+Estructura de Costes: Mantenimiento de servidores/nodos, desarrollo de Smart Contracts, adquisición de usuarios (CAC) y el fondo de liquidez en dinero real para pagar a las cafeterías por los tokens canjeados.
+
+6. Ventaja Injusta y Canales
+Ventaja Injusta: Proximidad física inmediata a las instalaciones, compatibilidad total con el calendario académico y la posibilidad única de acreditar horas de servicio social/prácticas profesionales para carreras técnicas e ingenierías.
+
+Canales de Difusión: Plataforma Web, grupos oficiales de WhatsApp/universidad, módulos físicos y representación estudiantil.
+
+7. Métricas Clave y Cierre
+"Mediremos nuestro éxito mediante el tiempo promedio de resolución de reportes, el número de misiones completadas por mes y el total de apoyo económico/alimentos transferido a los estudiantes participantes. UtezXFuture no solo repara espacios, sino que transforma el esfuerzo estudiantil en alimento e impacto social garantizado por tecnología Blockchain."
+¿Sabían que en nuestros campus universitarios convivimos a diario con una paradoja alarmante: estudiantes con severa falta de recursos para cubrir su alimentación básica mientras la infraestructura académica acumula decenas de pequeñas fallas de mantenimiento que nadie atiende? Para resolver este problema de raíz creamos UtezXFuture, una plataforma integral que convierte el mantenimiento colaborativo en inclusión social y desarrollo económico dentro de la universidad. A través de brigadas de microtrabajos comunitarios, los propios estudiantes resuelven incidencias menores e hiperlocales en las instalaciones y, a cambio, son recompensados de forma transparente con tokens digitales gestionados mediante contratos inteligentes en tecnología Blockchain. Cada tarea completada de forma óptima ejecuta automáticamente la transferencia de tokens, los cuales los alumnos pueden canjear en tiempo real mediante códigos QR por comida completa en la cafetería del campus o por productos de los emprendedores locales, todo respaldado por un fondo de liquidez en dinero real financiado por la administración universitaria y patrocinadores clave. Nuestro modelo beneficia simultáneamente a tres sectores: a los estudiantes con necesidades financieras que ganan acceso directo a alimentación y además acreditan horas de servicio social o prácticas profesionales; a la universidad, que reduce drásticamente sus tiempos de respuesta e insumos en mantenimiento ligero; y a los comercios del campus, que incrementan sus ventas y flujo de clientes diarios. Nos diferenciamos drásticamente por nuestra cercanía física inmediata, la sincronización total con el calendario académico y la validez curricular de las actividades. Generamos ingresos sostenibles cobrando suscripciones a los productores y emprendedores que desean formar parte de la red de canje, ofreciendo planes premium de gestión y reteniendo pequeñas comisiones por cada transacción ejecutada. Difundiéndonos mediante plataformas digitales oficiales, módulos físicos y la representación estudiantil, medimos nuestro éxito a través del tiempo promedio en que se resuelve un reporte, el volumen mensual de misiones completadas y la cantidad total de dinero e impacto social transferido directamente a la nutrición y calidad de vida de los estudiantes.
