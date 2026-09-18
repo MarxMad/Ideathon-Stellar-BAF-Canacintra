@@ -1,149 +1,126 @@
-# Ideathon Stellar × BAF × CANACINTRA
+# NodoSkill
 
-**25 de agosto de 2026**
+Plataforma B2B2C que transforma aportaciones corporativas en acceso verificable a cursos y certificaciones para estudiantes.
 
-Ustedes convierten un problema industrial en una hipótesis de una página. El método es el Lean Canvas. Stellar entra solo si el negocio lo pide.
+NodoSkill conecta empresas, instituciones educativas y estudiantes mediante un ecosistema cerrado de **SkillCredits**. Las empresas pueden medir el impacto de sus aportaciones, las escuelas validan a sus estudiantes y los beneficiarios utilizan los créditos exclusivamente dentro de un marketplace educativo.
 
----
+## Demo frontend
 
-## Qué entregan
+Este repositorio contiene un prototipo funcional del portal corporativo. Utiliza datos simulados y no requiere backend, base de datos ni instalación de dependencias.
 
-Dos archivos, en un Pull Request:
+La demo permite:
 
-```
-ideas/equipo-07-nombre-corto/
-├── lean-canvas.md
-└── pitch.md
-```
+- Consultar métricas de aportaciones, estudiantes y certificaciones.
+- Revisar la trazabilidad agregada de los fondos.
+- Explorar estudiantes, instituciones y progreso académico.
+- Buscar y filtrar cursos del marketplace.
+- Asignar cursos y descontar SkillCredits del saldo disponible.
+- Registrar aportaciones corporativas simuladas.
+- Consultar comprobantes fiscales y certificados de impacto.
+- Navegar desde computadoras, tabletas y dispositivos móviles.
 
-Minúsculas, guiones, sin acentos. Copien las secciones de abajo y llénenlas.
+## Ejecución
 
----
+La opción más sencilla es abrir `index.html` directamente en un navegador moderno.
 
-## Lean Canvas
+También puede utilizarse un servidor local:
 
-No se llena de izquierda a derecha. Este es el orden:
-
-| # | Bloque | Pregunta |
-|---|---|---|
-| 1 | Segmentos de clientes | ¿Quién es, con industria, tamaño y ciudad? ¿Quién usa y quién paga? |
-| 2 | Problema | Tres dolores. El principal, en pesos o en días. |
-| 3 | Propuesta única de valor | ¿Qué cambia la semana que entra? |
-| 4 | Solución | Un verbo por cada dolor. |
-| 5 | Canales | ¿Cómo llegan a los primeros diez? |
-| 6 | Flujos de ingreso | ¿Quién paga, cuánto, contra qué? |
-| 7 | Estructura de costos | ¿Qué cuesta una sola operación? |
-| 8 | Métricas clave | ¿Qué dos números dirían si el piloto funciona? |
-| 9 | Ventaja injusta | ¿Qué no copian en 30 días? |
-
-Si una casilla no cabe en una frase corta, está incompleta. Se recorta, no se adorna.
-
-```markdown
-# Lean Canvas
-
-**Equipo:**
-**Vertical:**
-
-## 1 · Segmentos de clientes
-- Cliente:
-- Usuario:
-- Pagador:
-- Primera empresa:
-
-## 2 · Problema
-1.
-2.
-3.
-Alternativa actual:
-Qué le cuesta:
-
-## 3 · Propuesta única de valor
-
-
-## 4 · Solución
-1.
-2.
-3.
-
-## 5 · Canales
-
-
-## 6 · Flujos de ingreso
-- Quién paga:
-- Modelo:
-- Precio:
-- Contra qué se compara:
-
-## 7 · Estructura de costos (una operación)
-
-
-## 8 · Métricas clave
-1.
-2.
-
-## 9 · Ventaja injusta
-
+```bash
+npx serve .
 ```
 
----
+Después, abre la dirección indicada por el servidor, normalmente `http://localhost:3000`.
 
-## Pitch (máximo 5 minutos)
+> La demo carga las tipografías DM Sans y Manrope desde Google Fonts. Si no hay conexión a internet, utilizará la tipografía alternativa del sistema.
 
-Máximo dos personas al frente.
+## Recorrido sugerido
 
-| Tiempo | Qué dicen |
-|---|---|
-| 0:00–1:00 | El problema, con cifra |
-| 1:00–1:45 | El cliente y quién paga |
-| 1:45–3:00 | La solución en tres verbos |
-| 3:00–4:00 | Precio, margen, mercado chico y honesto |
-| 4:00–5:00 | Empresa piloto, qué piden el lunes, riesgo #1 |
+1. En **Resumen**, revisa los principales indicadores y la distribución de habilidades.
+2. En **Impacto**, consulta cómo avanzan los recursos desde la aportación hasta el logro verificado.
+3. En **Estudiantes**, utiliza el buscador y filtra por estado.
+4. En **Marketplace**, selecciona una categoría y asigna un curso a un estudiante.
+5. Comprueba que el saldo de SkillCredits disminuye después de la asignación.
+6. En **Aportaciones**, registra una nueva aportación simulada.
+7. Consulta el nuevo movimiento y su documentación en **Comprobantes**.
 
-```markdown
-# Pitch
+## Módulos
 
-| Tiempo | Sección | Guion |
-|---|---|---|
-| 0:00–1:00 | Problema | |
-| 1:00–1:45 | Cliente | |
-| 1:45–3:00 | Solución | |
-| 3:00–4:00 | Modelo | |
-| 4:00–5:00 | Piloto | |
+| Módulo | Función |
+| --- | --- |
+| Resumen | Vista ejecutiva con KPIs, gráficas y actividad reciente. |
+| Impacto | Indicadores de activación, finalización y trazabilidad de fondos. |
+| Estudiantes | Búsqueda, filtrado y seguimiento anonimizado de beneficiarios. |
+| Marketplace | Catálogo de cursos y asignación mediante SkillCredits. |
+| Aportaciones | Registro simulado e historial de aportaciones corporativas. |
+| Comprobantes | Consulta simulada de CFDI y certificados de impacto. |
+
+## Estructura
+
+```text
+NodoSkill/
+├── index.html   # Estructura base y navegación
+├── styles.css   # Sistema visual y diseño responsive
+├── app.js       # Vistas, datos mock e interacciones
+└── README.md    # Documentación del proyecto
 ```
 
----
+## Datos y persistencia
 
-## Lo básico de Stellar
+Todos los datos son mocks definidos en `app.js`. Las operaciones modifican el estado únicamente durante la sesión actual del navegador. Al recargar la página se restauran los valores iniciales.
 
-Stellar es una red para **mover valor** (pagos, USDC) y **dejar un registro** que varias partes pueden verificar. La red cobra fracciones de centavo. El costo que define el margen es **convertir a pesos**.
+No se procesan pagos, no se generan documentos fiscales reales y no se envía información a servicios externos.
 
-No hay que encajar la idea a la red. Si el cliente se resuelve con Excel y SPEI, se dice.
+## Concepto de producto
 
-La guía corta está en [`stellar.md`](stellar.md).
+### Problema
 
----
+- Los estudiantes carecen de liquidez para pagar formación extracurricular.
+- Las empresas tienen poca visibilidad sobre el impacto real de sus donaciones.
+- Las alternativas tradicionales suelen tener procesos lentos y trazabilidad limitada.
 
-## Cómo entregar
+### Propuesta de valor
 
-Todo desde el navegador. Un fork por equipo.
+Para empresas:
 
-1. Abrir este repo: [github.com/MarxMad/Ideathon-Stellar-BAF-Canacintra](https://github.com/MarxMad/Ideathon-Stellar-BAF-Canacintra).
-2. Arriba a la derecha: **Fork** → **Create fork**.
-3. La URL debe decir `github.com/SU-USUARIO/Ideathon-Stellar-BAF-Canacintra`.
-4. **Add file** → **Upload files**. Suben `lean-canvas.md` y `pitch.md` a `ideas/equipo-07-nombre-corto/`.
-5. **Commit changes**.
-6. **Contribute** → **Open pull request** hacia este repo.
-7. Título: `Equipo 07 — Nombre de la idea`.
+> Transformamos tus obligaciones fiscales en habilidades medibles, con trazabilidad peso por peso.
 
----
+Para estudiantes:
 
-## Cómo se evalúa
+> Una billetera educativa que financia cursos y certificaciones por ser estudiante activo.
 
-Se evalúa la hipótesis, no si “encaja” en Stellar.
+### Modelo operativo
 
-| Criterio | Pts |
-|---|---|
-| Problema y cliente | 25 |
-| Lean Canvas | 25 |
-| Modelo de negocio | 30 |
-| Pitch (máx. 5 min) | 20 |
+1. Una empresa realiza una aportación.
+2. NodoSkill convierte los recursos disponibles en SkillCredits.
+3. Una institución valida que el beneficiario sea estudiante activo.
+4. El estudiante o administrador selecciona formación dentro del marketplace.
+5. NodoSkill paga al aliado educativo y descuenta los créditos utilizados.
+6. La empresa consulta resultados agregados y verificables.
+
+## Consideraciones para producción
+
+El prototipo cubre exclusivamente la experiencia frontend. Una implementación productiva requeriría:
+
+- Autenticación y permisos para empresas, escuelas y estudiantes.
+- API y base de datos con auditoría de movimientos.
+- Integración segura con sistemas escolares.
+- Conexión con aliados educativos y proveedores de pago.
+- Generación y validación de CFDI.
+- Protección de datos personales y consentimiento informado.
+- Alianza con una Donataria Autorizada o estructura fiscal equivalente.
+- Pruebas automatizadas, monitoreo y controles de ciberseguridad.
+
+## Tecnologías
+
+- HTML5
+- CSS3
+- JavaScript sin frameworks
+- Google Fonts
+
+## Estado
+
+Prototipo navegable para validación de concepto, presentaciones y pruebas de experiencia de usuario. No representa una plataforma fiscal o financiera operativa.
+
+## Licencia
+
+Antes de publicar el repositorio, define la licencia adecuada para el proyecto. Para código abierto permisivo puede considerarse MIT; si el proyecto será privado o comercial, conviene mantener los derechos reservados hasta definir la estrategia legal.
