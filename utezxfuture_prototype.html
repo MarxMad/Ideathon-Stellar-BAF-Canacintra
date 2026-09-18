@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UtezXFuture — Prototipo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#151E3F;
+  --paper:#F0F2F6;
+  --card:#FFFFFF;
+  --token:#E8B923;
+  --token-deep:#B98A0E;
+  --comprador:#4C5FD5;
+  --vendedor:#1D9A8F;
+  --altruista:#FF6B5B;
+  --line:#DADFE8;
+  --muted:#6B7488;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(21,30,63,.05), 0 8px 24px rgba(21,30,63,.06);
+  --font-display:'Space Grotesk', sans-serif;
+  --font-body:'Inter', sans-serif;
+  --font-mono:'IBM Plex Mono', monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+a{color:inherit;}
+.container{width:92%;max-width:1180px;margin:0 auto;}
+
+/* ---------- Skip link / focus ---------- */
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
+  outline:3px solid var(--token-deep); outline-offset:2px;
+}
+
+/* ---------- Header ---------- */
+header{
+  position:sticky; top:0; z-index:50;
+  background:var(--ink); color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 0;
+}
+.brand{
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--font-display); font-weight:700; font-size:1.15rem; letter-spacing:-.01em;
+}
+.brand-mark{
+  width:30px; height:30px; border-radius:50%;
+  background:conic-gradient(from 220deg, var(--token), var(--altruista), var(--comprador), var(--vendedor), var(--token));
+  display:grid; place-items:center; flex-shrink:0;
+}
+.brand-mark::after{
+  content:""; width:12px; height:12px; border-radius:50%; background:var(--ink);
+}
+.brand small{
+  display:block; font-family:var(--font-body); font-weight:400; font-size:.65rem; color:#B9C0D6; letter-spacing:.02em;
+}
+nav.main-nav{display:flex; gap:2px;}
+nav.main-nav a{
+  font-size:.87rem; font-weight:500; padding:8px 12px; border-radius:8px;
+  text-decoration:none; color:#D7DBEA; transition:background .15s, color .15s;
+  white-space:nowrap;
+}
+nav.main-nav a:hover{background:rgba(255,255,255,.08); color:#fff;}
+.header-actions{display:flex; align-items:center; gap:10px;}
+.token-pill{
+  display:flex; align-items:center; gap:6px;
+  background:rgba(232,185,35,.14); border:1px solid rgba(232,185,35,.35);
+  color:var(--token); font-family:var(--font-mono); font-weight:600; font-size:.82rem;
+  padding:6px 12px; border-radius:999px;
+}
+.token-pill svg{width:14px; height:14px;}
+.icon-btn{
+  width:38px; height:38px; border-radius:10px; border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04); color:#fff; display:grid; place-items:center; cursor:pointer;
+}
+.menu-toggle{display:none;}
+
+@media (max-width: 900px){
+  nav.main-nav{display:none;}
+  .menu-toggle{display:grid;}
+}
+
+/* ---------- Hero / Wallet ---------- */
+.hero{padding:32px 0 8px;}
+.hero-grid{
+  display:grid; grid-template-columns: 1.1fr 1.4fr; gap:20px;
+}
+@media (max-width: 860px){ .hero-grid{grid-template-columns:1fr;} }
+
+.wallet-card{
+  position:relative; overflow:hidden;
+  background:linear-gradient(135deg, #1B2454 0%, var(--ink) 55%, #0F1730 100%);
+  color:#fff; border-radius:20px; padding:26px; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; justify-content:space-between; min-height:210px;
+}
+.wallet-card::before{
+  content:""; position:absolute; inset:0;
+  background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size:14px 14px;
+  -webkit-mask-image:linear-gradient(160deg, black, transparent 60%);
+  mask-image:linear-gradient(160deg, black, transparent 60%);
+}
+.wallet-top{display:flex; justify-content:space-between; align-items:flex-start; position:relative;}
+.wallet-label{font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:#9FA8C7;}
+.wallet-balance{
+  font-family:var(--font-mono); font-size:2.4rem; font-weight:600; margin-top:6px; color:var(--token);
+  display:flex; align-items:baseline; gap:8px;
+}
+.wallet-balance span{font-size:1rem; color:#9FA8C7; font-family:var(--font-body); font-weight:500;}
+.wallet-chip{
+  width:44px; height:32px; border-radius:6px;
+  background:linear-gradient(135deg, var(--token), var(--token-deep));
+}
+.wallet-bottom{display:flex; justify-content:space-between; align-items:flex-end; position:relative; margin-top:20px;}
+.wallet-id{font-family:var(--font-mono); font-size:.78rem; color:#B9C0D6; letter-spacing:.05em;}
+.wallet-cta{
+  background:var(--token); color:var(--ink); border:none; font-family:var(--font-body); font-weight:600;
+  font-size:.82rem; padding:9px 16px; border-radius:10px; cursor:pointer;
+}
+
+.carousel{
+  background:var(--card); border-radius:20px; box-shadow:var(--shadow); overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.carousel-viewport{
+  position:relative; min-height:170px; display:flex; align-items:center; justify-content:center;
+  padding:26px; text-align:center; background:
+    linear-gradient(180deg, #FFFFFF, #F5F7FB);
+}
+.carousel-slide{display:none; animation:fade .4s ease;}
+.carousel-slide.active{display:block;}
+@keyframes fade{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+.carousel-eyebrow{
+  font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:8px; display:block;
+}
+.carousel-slide h3{font-family:var(--font-display); font-size:1.15rem; margin:0 0 6px;}
+.carousel-slide p{margin:0; color:var(--muted); font-size:.9rem; max-width:36ch; margin-inline:auto;}
+.carousel-controls{
+  display:flex; align-items:center; justify-content:space-between; padding:10px 16px;
+  border-top:1px solid var(--line);
+}
+.carousel-arrow{
+  border:none; background:none; cursor:pointer; color:var(--muted); width:30px; height:30px;
+  border-radius:8px; display:grid; place-items:center;
+}
+.carousel-arrow:hover{background:var(--paper); color:var(--ink);}
+.carousel-dots{display:flex; gap:6px;}
+.dot{
+  width:7px; height:7px; border-radius:50%; background:var(--line); border:none; cursor:pointer; padding:0;
+}
+.dot.active{background:var(--token-deep); width:18px; border-radius:4px; transition:width .2s;}
+
+/* ---------- Section heading ---------- */
+.section-head{
+  display:flex; align-items:baseline; justify-content:space-between; margin:40px 0 16px;
+}
+.section-head h2{font-family:var(--font-display); font-size:1.05rem; margin:0;}
+.section-head .eyebrow{
+  font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted);
+}
+
+/* ---------- Role switcher ---------- */
+.role-switch{display:flex; gap:8px; margin-bottom:22px; flex-wrap:wrap;}
+.role-btn{
+  border:1px solid var(--line); background:var(--card); font-family:var(--font-body); font-weight:600;
+  font-size:.85rem; padding:9px 16px; border-radius:999px; cursor:pointer; color:var(--muted);
+  display:flex; align-items:center; gap:7px; transition:all .15s;
+}
+.role-btn .dot-sm{width:8px; height:8px; border-radius:50%;}
+.role-btn[data-role="comprador"] .dot-sm{background:var(--comprador);}
+.role-btn[data-role="vendedor"] .dot-sm{background:var(--vendedor);}
+.role-btn[data-role="altruista"] .dot-sm{background:var(--altruista);}
+.role-btn.active{color:#fff; border-color:transparent;}
+.role-btn[data-role="comprador"].active{background:var(--comprador);}
+.role-btn[data-role="vendedor"].active{background:var(--vendedor);}
+.role-btn[data-role="altruista"].active{background:var(--altruista);}
+
+.role-panel{display:none;}
+.role-panel.active{display:grid; grid-template-columns:repeat(auto-fit, minmax(210px,1fr)); gap:12px;}
+
+.role-item{
+  background:var(--card); border-radius:14px; padding:16px; box-shadow:var(--shadow);
+  border-left:3px solid var(--role-color, var(--line));
+  display:flex; flex-direction:column; gap:4px; text-decoration:none; color:var(--ink);
+  transition:transform .15s;
+}
+.role-item:hover{transform:translateY(-2px);}
+.role-item strong{font-family:var(--font-display); font-size:.95rem;}
+.role-item span{font-size:.8rem; color:var(--muted);}
+
+/* ---------- General menu grid ---------- */
+.general-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:14px;
+}
+.general-card{
+  background:var(--card); border-radius:16px; padding:18px; box-shadow:var(--shadow);
+}
+.general-card h3{
+  font-family:var(--font-display); font-size:.85rem; margin:0 0 10px;
+  color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-weight:600;
+}
+.general-card ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px;}
+.general-card li a{
+  display:block; padding:8px 6px; border-radius:8px; text-decoration:none; color:var(--ink);
+  font-size:.92rem; transition:background .15s;
+}
+.general-card li a:hover{background:var(--paper);}
+
+footer{
+  margin-top:56px; padding:26px 0; border-top:1px solid var(--line); color:var(--muted); font-size:.82rem;
+}
+
+.notes{
+  background:#FFF8E1; border:1px dashed #E5C158; border-radius:14px; padding:16px 18px; margin:40px 0;
+  font-size:.85rem; color:#7A5A0A; line-height:1.5;
+}
+.notes strong{color:#5C4300;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <button class="icon-btn menu-toggle" title="Menú" aria-label="Abrir menú">☰</button>
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          UtezXFuture
+          <small>Campus token economy</small>
+        </div>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="#home">Home</a>
+      <a href="#apoyos">Apoyos</a>
+      <a href="#solicitudes">Solicitudes</a>
+      <a href="#aclaraciones">Aclaraciones</a>
+      <a href="#productos">Productos</a>
+      <a href="#suscripciones">Suscripciones</a>
+      <a href="#quienes-somos">Quiénes somos</a>
+    </nav>
+    <div class="header-actions">
+      <div class="token-pill" title="Tu saldo de tokens">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M8.5 9.5h5a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h5"/></svg>
+        128
+      </div>
+      <button class="icon-btn" title="Menú de usuario" aria-label="Menú de usuario">👤</button>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- HERO: wallet + avisos -->
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div class="wallet-card">
+        <div class="wallet-top">
+          <div>
+            <span class="wallet-label">Tu cartera</span>
+            <div class="wallet-balance">128 <span>tokens</span></div>
+          </div>
+          <div class="wallet-chip" aria-hidden="true"></div>
+        </div>
+        <div class="wallet-bottom">
+          <span class="wallet-id">UTEZ · 2026 · #04821</span>
+          <button class="wallet-cta">Canjear</button>
+        </div>
+      </div>
+
+      <div class="carousel">
+        <div class="carousel-viewport">
+          <div class="carousel-slide active">
+            <span class="carousel-eyebrow">Aviso</span>
+            <h3>Brigada de mantenimiento — este viernes</h3>
+            <p>Repara bancas en la explanada central y gana hasta 15 tokens.</p>
+          </div>
+          <div class="carousel-slide">
+            <span class="carousel-eyebrow">Nuevo</span>
+            <h3>Cafetería ya acepta tokens</h3>
+            <p>Canjea tu saldo por comida en el módulo principal desde hoy.</p>
+          </div>
+          <div class="carousel-slide">
+            <span class="carousel-eyebrow">Emprendimiento</span>
+            <h3>Abre tu tienda en Productos</h3>
+            <p>Publica lo que vendes y recibe tokens o suscripciones premium.</p>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-arrow" aria-label="Anterior" onclick="moveSlide(-1)">‹</button>
+          <div class="carousel-dots" role="tablist" aria-label="Seleccionar aviso"></div>
+          <button class="carousel-arrow" aria-label="Siguiente" onclick="moveSlide(1)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENÚ GENERAL -->
+  <div class="section-head">
+    <h2>Navegación general</h2>
+    <span class="eyebrow">Páginas del sitio</span>
+  </div>
+  <div class="general-grid">
+    <div class="general-card">
+      <h3>Explorar</h3>
+      <ul>
+        <li><a href="#apoyos">Apoyos</a></li>
+        <li><a href="#solicitudes">Solicitudes</a></li>
+        <li><a href="#aclaraciones">Aclaraciones</a></li>
+      </ul>
+    </div>
+    <div class="general-card">
+      <h3>Mercadito "La venganza"</h3>
+      <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#suscripciones">Suscripciones</a></li>
+      </ul>
+    </div>
+    <div class="general-card">
+      <h3>Institucional</h3>
+      <ul>
+        <li><a href="#quienes-somos">Quiénes somos</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MENÚS POR ROL -->
+  <div class="section-head">
+    <h2>Tu espacio</h2>
+    <span class="eyebrow">Según tu rol activo</span>
+  </div>
+  <div class="role-switch" role="tablist" aria-label="Cambiar de rol">
+    <button class="role-btn active" data-role="comprador" onclick="setRole('comprador')"><span class="dot-sm"></span>Comprador</button>
+    <button class="role-btn" data-role="vendedor" onclick="setRole('vendedor')"><span class="dot-sm"></span>Vendedor</button>
+    <button class="role-btn" data-role="altruista" onclick="setRole('altruista')"><span class="dot-sm"></span>Altruista</button>
+  </div>
+
+  <div class="role-panel active" id="panel-comprador" style="--role-color:var(--comprador)">
+    <a class="role-item" style="--role-color:var(--comprador)" href="#"><strong>Mi perfil</strong><span>Datos y credencial digital</span></a>
+    <a class="role-item" style="--role-color:var(--comprador)" href="#"><strong>Mi cartera</strong><span>Saldo y movimientos de tokens</span></a>
+    <a class="role-item" style="--role-color:var(--comprador)" href="#"><strong>Mis solicitudes</strong><span>Seguimiento de reportes enviados</span></a>
+    <a class="role-item" style="--role-color:var(--comprador)" href="#"><strong>Mis compras</strong><span>Historial de canjes y pedidos</span></a>
+    <a class="role-item" style="--role-color:var(--comprador)" href="#"><strong>Mi suscripción</strong><span>Plan actual y beneficios</span></a>
+  </div>
+
+  <div class="role-panel" id="panel-vendedor" style="--role-color:var(--vendedor)">
+    <a class="role-item" style="--role-color:var(--vendedor)" href="#"><strong>Mi perfil</strong><span>Datos del emprendimiento</span></a>
+    <a class="role-item" style="--role-color:var(--vendedor)" href="#"><strong>Mi cartera</strong><span>Ingresos y comisiones</span></a>
+    <a class="role-item" style="--role-color:var(--vendedor)" href="#"><strong>Mis productos</strong><span>Catálogo publicado</span></a>
+    <a class="role-item" style="--role-color:var(--vendedor)" href="#"><strong>Mis ventas</strong><span>Pedidos activos e historial</span></a>
+    <a class="role-item" style="--role-color:var(--vendedor)" href="#"><strong>Mi suscripción</strong><span>Plan actual y beneficios</span></a>
+    <a class="role-item" style="--role-color:var(--vendedor)" href="#"><strong>Head de productos</strong><span>Gestión avanzada de catálogo</span></a>
+  </div>
+
+  <div class="role-panel" id="panel-altruista" style="--role-color:var(--altruista)">
+    <a class="role-item" style="--role-color:var(--altruista)" href="#"><strong>Mi perfil</strong><span>Historial de participación</span></a>
+    <a class="role-item" style="--role-color:var(--altruista)" href="#"><strong>Mi cartera</strong><span>Tokens ganados por tareas</span></a>
+    <a class="role-item" style="--role-color:var(--altruista)" href="#"><strong>Mis servicios</strong><span>Habilidades que ofreces</span></a>
+    <a class="role-item" style="--role-color:var(--altruista)" href="#"><strong>Mis trabajos</strong><span>Microtareas asignadas</span></a>
+    <a class="role-item" style="--role-color:var(--altruista)" href="#"><strong>Mi suscripción</strong><span>Plan actual y beneficios</span></a>
+    <a class="role-item" style="--role-color:var(--altruista)" href="#"><strong>Donativos</strong><span>Aportes recibidos o enviados</span></a>
+  </div>
+
+  <div class="notes">
+    <strong>Notas del prototipo —</strong> el saldo de tokens ahora vive en el header y en la tarjeta de cartera porque es el valor central del producto. Los tres roles (Comprador / Vendedor / Altruista) usan un selector con color propio para dejar claro en qué "modo" está el usuario, en vez de mostrar los tres menús a la vez. El carrusel ya cicla automáticamente y responde a flechas, puntos y teclado. La navegación institucional se separó del panel de rol activo.
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    UtezXFuture — Prototipo de interfaz · versión 2.0
+  </div>
+</footer>
+
+<script>
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dotsWrap = document.querySelector('.carousel-dots');
+  let current = 0;
+  let timer;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Aviso ' + (i + 1));
+    d.onclick = () => { current = i; render(); resetTimer(); };
+    dotsWrap.appendChild(d);
+  });
+
+  function render(){
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    dotsWrap.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  function moveSlide(dir){
+    current = (current + dir + slides.length) % slides.length;
+    render();
+    resetTimer();
+  }
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(() => moveSlide(1), 5000);
+  }
+  resetTimer();
+
+  function setRole(role){
+    document.querySelectorAll('.role-btn').forEach(b => b.classList.toggle('active', b.dataset.role === role));
+    document.querySelectorAll('.role-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + role));
+  }
+</script>
+
+</body>
+</html>
